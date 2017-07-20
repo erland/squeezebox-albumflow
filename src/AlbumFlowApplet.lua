@@ -80,7 +80,7 @@ function openScreensaver1(self)
 	self:_initApplet(true,"config1")
 end
 function openScreensaver2(self)
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 	if licensed then
 		self:_initApplet(true,"config2")
 	else
@@ -88,7 +88,7 @@ function openScreensaver2(self)
 	end
 end
 function openScreensaver3(self)
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 	if licensed then
 		self:_initApplet(true,"config3")
 	else
@@ -96,7 +96,7 @@ function openScreensaver3(self)
 	end
 end
 function openScreensaver4(self)
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 	if licensed then
 		self:_initApplet(true,"config4")
 	else
@@ -104,7 +104,7 @@ function openScreensaver4(self)
 	end
 end
 function openScreensaver5(self)
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 	if licensed then
 		self:_initApplet(true,"config5")
 	else
@@ -122,7 +122,7 @@ end
 function _initApplet(self, ss,config,forced)
 	jnt:subscribe(self)
 
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 
 	self.config = config
 	local mode = self:getSettings()[config.."mode"]
@@ -307,7 +307,7 @@ end
 function openScreensaverSettings(self)
 	log:debug("Album Flow settings")
 	local window = Window("text_list", self:string("SCREENSAVER_ALBUMFLOW_SETTINGS"), 'settingstitle')
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 	local menu = SimpleMenu("menu");
 	if not licensed then
 		menu:setHeaderWidget(Textarea("help_text", self:string("SCREENSAVER_ALBUMFLOW_SETTINGS_UNLICENSED")))
@@ -513,7 +513,7 @@ function defineSettingModeSink(self,title,mode,songInfoItems,pictureGalleryItems
 	window:addWidget(menu)
 	local group = RadioGroup()
 
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 	if licensed then
 		menu:addItem({
 			text = self:string("SCREENSAVER_ALBUMFLOW_VIEW_ALBUM"),
@@ -1682,7 +1682,7 @@ function _loadImages(self,offset)
 	if offset>0 then
 		amount = 100
 	end
-	local licensed = appletManager:callService("isLicensedApplet","AlbumFlow")
+	local licensed = true
 	if licensed and (not self.mode or self.mode == "random" or self.mode == "album") then
 		log:debug("Loading album from main list")
 		self.server:userRequest(function(chunk,err)
